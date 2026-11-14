@@ -1,0 +1,39 @@
+# Dependencies
+node_modules/
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Storage and uploads
+storage/uploads/*
+!storage/uploads/.gitkeep
+storage/processed/*
+!storage/processed/.gitkeep
+
+# Next.js build
+.next/
+out/
+build/
+dist/
+
+# Testing and coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Logs and DB
+*.log
+*.sqlite
+*.db
+
+# OS files
+.DS_Store
+Thumbs.db

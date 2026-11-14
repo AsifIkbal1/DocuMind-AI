@@ -1,0 +1,31 @@
+from backend.app.models.entities import (
+    User,
+    Document,
+    DocumentPage,
+    ExtractedText,
+    Invoice,
+    InvoiceLineItem,
+    ValidationResult,
+    VerificationReport,
+    VerificationItem,
+    ProcessingJob,
+    ProcessingHistory,
+    ManualCorrection,
+    AuditLog,
+)
+
+__all__ = [
+    "User",
+    "Document",
+    "DocumentPage",
+    "ExtractedText",
+    "Invoice",
+    "InvoiceLineItem",
+    "ValidationResult",
+    "VerificationReport",
+    "VerificationItem",
+    "ProcessingJob",
+    "ProcessingHistory",
+    "ManualCorrection",
+    "AuditLog",
+]

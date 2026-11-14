@@ -1,0 +1,4 @@
+invoice_number,date,supplier,total_amount,status
+INV-2026-001,2026-11-10,ABC Technologies Ltd.,11500.0,PAID
+INV-2026-002,2026-11-11,Global Telecom Inc.,5500.0,PENDING
+INV-2026-004,2026-11-13,Apex Cyber Security,8800.0,PAID

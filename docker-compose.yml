@@ -1,0 +1,105 @@
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: documind-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgrespassword
+      POSTGRES_DB: documind_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d documind_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: documind-redis
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: documind-backend
+    restart: always
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgrespassword@postgres:5432/documind_db
+      - REDIS_URL=redis://redis:6379/0
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/1
+      - AI_PROVIDER=${AI_PROVIDER:-gemini}
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - AI_MODEL=${AI_MODEL:-gemini-2.0-flash}
+      - UPLOAD_DIR=/app/storage/uploads
+      - PROCESSED_DIR=/app/storage/processed
+      - CORS_ORIGINS=http://localhost:3000,http://frontend:3000
+    ports:
+      - "8000:8000"
+    volumes:
+      - documind_storage:/app/storage
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000
+
+  celery_worker:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: documind-celery-worker
+    restart: always
+    depends_on:
+      backend:
+        condition: service_started
+      redis:
+        condition: service_healthy
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgrespassword@postgres:5432/documind_db
+      - REDIS_URL=redis://redis:6379/0
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/1
+      - AI_PROVIDER=${AI_PROVIDER:-gemini}
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - AI_MODEL=${AI_MODEL:-gemini-2.0-flash}
+      - UPLOAD_DIR=/app/storage/uploads
+      - PROCESSED_DIR=/app/storage/processed
+    volumes:
+      - documind_storage:/app/storage
+    command: celery -A app.tasks.celery_app worker --loglevel=info --concurrency=4
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: documind-frontend
+    restart: always
+    depends_on:
+      - backend
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8000/api
+    ports:
+      - "3000:3000"
+
+volumes:
+  postgres_data:
+  redis_data:
+  documind_storage:

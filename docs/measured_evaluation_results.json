@@ -1,0 +1,15 @@
+{
+  "dataset_size": 7,
+  "total_documents_processed": 7,
+  "successful_documents": 7,
+  "failed_documents": 0,
+  "document_processing_success_rate_pct": 100.0,
+  "document_failure_rate_pct": 0.0,
+  "average_processing_time_seconds": 0.222,
+  "field_level_extraction_accuracy_pct": 70.59,
+  "invoice_level_extraction_accuracy_pct": 60.0,
+  "ocr_success_rate_pct": 100.0,
+  "validation_detection_accuracy_pct": 66.67,
+  "verification_matching_accuracy_pct": 100.0,
+  "measured_timestamp": "2026-11-14 02:10:56 UTC"
+}

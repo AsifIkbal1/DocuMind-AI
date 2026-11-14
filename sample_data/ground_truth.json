@@ -1,0 +1,65 @@
+{
+  "invoice_valid_001.pdf": {
+    "invoice_number": "INV-2026-001",
+    "invoice_date": "2026-11-10",
+    "supplier_name": "ABC Technologies Ltd.",
+    "customer_name": "XYZ Corporation",
+    "subtotal": 10000.0,
+    "tax": 1500.0,
+    "total_amount": 11500.0,
+    "currency": "USD",
+    "expected_valid": true,
+    "classification": "Invoice"
+  },
+  "invoice_duplicate_001.pdf": {
+    "invoice_number": "INV-2026-001",
+    "invoice_date": "2026-11-10",
+    "supplier_name": "ABC Technologies Ltd",
+    "customer_name": "XYZ Corporation",
+    "subtotal": 10000.0,
+    "tax": 1500.0,
+    "total_amount": 11500.0,
+    "currency": "USD",
+    "expected_duplicate": true,
+    "classification": "Invoice"
+  },
+  "invoice_math_error_002.pdf": {
+    "invoice_number": "INV-2026-002",
+    "invoice_date": "2026-11-11",
+    "supplier_name": "Global Telecom Inc.",
+    "customer_name": "Acme Enterprises",
+    "subtotal": 5000.0,
+    "tax": 500.0,
+    "total_amount": 6200.0,
+    "expected_valid": false,
+    "expected_error": "CALCULATION_MISMATCH",
+    "classification": "Invoice"
+  },
+  "scanned_receipt_003.pdf": {
+    "invoice_number": "REC-2026-8801",
+    "invoice_date": "2026-11-12",
+    "supplier_name": "Metro Office Supplies",
+    "customer_name": "Alpha Holdings",
+    "total_amount": 330.0,
+    "classification": "Receipt"
+  },
+  "invoice_image_004.png": {
+    "invoice_number": "INV-2026-004",
+    "invoice_date": "2026-11-13",
+    "supplier_name": "Apex Cyber Security",
+    "customer_name": "Enterprise Bank Ltd",
+    "subtotal": 8000.0,
+    "tax": 800.0,
+    "total_amount": 8800.0,
+    "classification": "Invoice"
+  },
+  "monthly_reconciliation_2026.xlsx": {
+    "sheets": [
+      "Invoice_Ledger",
+      "Dept_Summary"
+    ],
+    "records_count": 5,
+    "duplicate_rows": 1,
+    "classification": "Spreadsheet"
+  }
+}
