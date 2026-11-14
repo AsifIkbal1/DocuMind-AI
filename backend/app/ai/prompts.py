@@ -77,3 +77,4 @@ Please fix the formatting, strictly validate numerical values, and return ONLY v
 FINANCIAL_INTERPRETATION_PROMPT = """Review this complex financial document and identify if discounts, shipping, surcharge, or multiple VAT/sales tax tiers apply.
 Return a structured summary of financial terms and special line items.
 """
+

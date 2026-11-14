@@ -59,3 +59,4 @@ def search_documents_post(
         total_results=len(results),
         results=results,
     )
+

@@ -52,3 +52,4 @@ The benchmarks below were measured using `scripts/run_evaluation.py` on 2026-11-
 ### C. Unit Test Suite (Pytest)
 - 22 tests passing (100% pass rate in 1.27 seconds)
 - Deterministic verification of math formulas, duplicate detection, and REST APIs.
+

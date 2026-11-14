@@ -77,3 +77,4 @@ def login(login_data: UserLogin, db: Session = Depends(get_db)):
             "role": user.role,
         },
     }
+

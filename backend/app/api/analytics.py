@@ -140,3 +140,4 @@ def export_invoices_csv(db: Session = Depends(get_db)):
         media_type="text/csv",
         headers={"Content-Disposition": "attachment; filename=extracted_invoices_report.csv"},
     )
+

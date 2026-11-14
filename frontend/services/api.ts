@@ -129,3 +129,4 @@ export const api = {
 
   getFilePreviewUrl: (documentId: string) => `${API_BASE}/documents/${documentId}/file`,
 };
+

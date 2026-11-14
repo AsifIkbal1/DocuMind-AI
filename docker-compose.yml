@@ -103,3 +103,4 @@ volumes:
   postgres_data:
   redis_data:
   documind_storage:
+

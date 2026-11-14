@@ -91,3 +91,4 @@ def test_pdf_to_excel_verification(db_session):
     # Check that report detected the match
     matched_items = [item for item in report.items if item.is_match]
     assert len(matched_items) >= 1
+

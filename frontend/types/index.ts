@@ -147,3 +147,4 @@ export interface AnalyticsOverview {
   validation_error_distribution: Record<string, number>;
   recent_activity: Array<{ id: string; action: string; entity: string; timestamp: string; details: any }>;
 }
+

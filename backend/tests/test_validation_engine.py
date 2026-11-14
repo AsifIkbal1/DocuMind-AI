@@ -114,3 +114,4 @@ def test_validation_detects_exact_duplicate(db_session):
     val_types = [r.validation_type for r in results]
     assert "EXACT_DUPLICATE_INVOICE" in val_types
     assert doc2.is_duplicate is True
+

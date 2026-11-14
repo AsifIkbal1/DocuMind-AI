@@ -60,3 +60,4 @@ DocuMind AI is an enterprise-grade, full-stack AI Document Intelligence platform
 7. **Storage & Search Indexing**:
    - Persists all results across 13 relational tables.
    - Automatically builds vector space representation for instant keyword and semantic natural-language retrieval.
+

@@ -56,3 +56,4 @@ def get_job_details(job_id: str, db: Session = Depends(get_db)):
         processing_duration=j.duration_seconds,
         error_message=j.error_message,
     )
+

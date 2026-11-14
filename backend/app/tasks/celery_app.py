@@ -34,3 +34,4 @@ def process_document_task(self, document_id: str):
         raise self.retry(exc=exc, countdown=10)
     finally:
         db.close()
+

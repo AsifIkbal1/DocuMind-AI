@@ -177,3 +177,4 @@ DocuMind AI utilizes a normalized relational architecture (PostgreSQL in contain
 - `user_email` (VARCHAR(255))
 - `details` (JSON)
 - `timestamp` (DATETIME)
+

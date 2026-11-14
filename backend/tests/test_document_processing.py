@@ -86,3 +86,4 @@ def test_text_normalizer():
     assert "\n\n\n" not in norm
     amt = text_normalizer.clean_currency_amount("$12,500.50")
     assert amt == 12500.50
+

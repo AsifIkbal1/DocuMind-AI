@@ -357,3 +357,4 @@ Complete system prompts, error-recovery instructions, and architectural boundari
 ## License & Compliance
 
 Developed as an enterprise-grade reference implementation for AI-Powered Document Intelligence, automated ledger reconciliation, and deterministic data integrity. All rights reserved.
+

@@ -48,3 +48,4 @@ def test_ai_extraction_multiple_currencies():
     schema, raw, provider = ai_extraction_engine.extract(bdt_text)
     assert schema.currency == "BDT"
     assert schema.total_amount == 75000.00
+

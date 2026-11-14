@@ -49,3 +49,4 @@ def health_check(db: Session = Depends(get_db)):
         "ai_provider": ai_status,
         "environment": settings.ENVIRONMENT,
     }
+

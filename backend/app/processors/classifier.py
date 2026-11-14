@@ -67,3 +67,4 @@ class DocumentClassifier:
 
 
 document_classifier = DocumentClassifier()
+

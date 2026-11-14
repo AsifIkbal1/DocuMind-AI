@@ -58,3 +58,4 @@ def validate_file(file_path: str, original_filename: str) -> Tuple[bool, str, in
 
     file_hash = compute_file_hash(file_path)
     return True, file_format, file_size, file_hash
+

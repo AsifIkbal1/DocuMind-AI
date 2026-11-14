@@ -167,3 +167,4 @@ To ensure 100% financial accuracy, audit compliance, and eliminate LLM hallucina
 2. **Temperature Clamping**: Extraction models are pinned to `temperature: 0.1` (or `0.0` for OpenAI) to enforce deterministic, repeatable token generation.
 3. **Zero-Math Reliance**: The LLM is instructed **never** to compute sums or infer missing math values. All calculations are evaluated independently by `backend/app/validators/validation_engine.py`.
 4. **Audit Immutability**: All original extracted data is stored in `extracted_texts` and `invoices`. When manual corrections are made, they are recorded in `manual_corrections` without altering the initial AI extraction baseline, providing forensic transparency for enterprise auditors.
+

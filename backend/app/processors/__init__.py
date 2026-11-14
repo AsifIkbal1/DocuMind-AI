@@ -17,3 +17,4 @@ __all__ = [
     "text_normalizer",
     "TextNormalizer",
 ]
+

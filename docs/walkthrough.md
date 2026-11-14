@@ -151,3 +151,4 @@ This document provides a comprehensive, step-by-step presentation and recorded w
   - Expand `GET /api/health` and click **"Execute"** (returns `status: healthy`, database: `connected`, providers: `ready`).
   - Expand `POST /api/documents/upload` and `POST /api/verification/pdf-excel`.
   - Conclude demonstration.
+

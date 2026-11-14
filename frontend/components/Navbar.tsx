@@ -1,13 +1,26 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Search, Bell, CheckCircle2, AlertCircle, User } from "lucide-react";
+import { Search, Bell, CheckCircle2, AlertCircle, Sun, Moon } from "lucide-react";
 import { api } from "../services/api";
 
 export function Navbar() {
   const [healthStatus, setHealthStatus] = useState<string>("checking");
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
 
   useEffect(() => {
+    // Check initial dark mode from localStorage or system preference
+    const savedTheme = localStorage.getItem("documind_theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
+      setIsDarkMode(true);
+      document.documentElement.classList.add("dark");
+    } else {
+      setIsDarkMode(false);
+      document.documentElement.classList.remove("dark");
+    }
+
+    // Health check
     api
       .getHealth()
       .then((res) => {
@@ -18,8 +31,20 @@ export function Navbar() {
       });
   }, []);
 
+  const toggleDarkMode = () => {
+    if (isDarkMode) {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("documind_theme", "light");
+      setIsDarkMode(false);
+    } else {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("documind_theme", "dark");
+      setIsDarkMode(true);
+    }
+  };
+
   return (
-    <header className="h-16 bg-white border-b border-slate-200 fixed top-0 right-0 left-64 z-30 flex items-center justify-between px-8">
+    <header className="h-16 bg-white border-b border-slate-200 fixed top-0 right-0 left-64 z-30 flex items-center justify-between px-8 transition-colors">
       {/* Search Input */}
       <div className="relative w-96">
         <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
@@ -57,6 +82,26 @@ export function Navbar() {
             </>
           )}
         </div>
+
+        {/* Night / Dark Mode Toggle */}
+        <button
+          onClick={toggleDarkMode}
+          className="p-2 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition-colors flex items-center gap-1.5"
+          title={isDarkMode ? "Switch to Day Mode" : "Switch to Night Mode"}
+          aria-label="Toggle theme"
+        >
+          {isDarkMode ? (
+            <>
+              <Sun className="w-4 h-4 text-amber-400" />
+              <span className="text-xs font-medium text-slate-300 hidden md:inline">Day</span>
+            </>
+          ) : (
+            <>
+              <Moon className="w-4 h-4 text-slate-600" />
+              <span className="text-xs font-medium text-slate-600 hidden md:inline">Night</span>
+            </>
+          )}
+        </button>
 
         {/* Notifications */}
         <button

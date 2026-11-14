@@ -80,3 +80,4 @@ def get_verification_report(report_id: str, db: Session = Depends(get_db)):
     if not report:
         raise HTTPException(status_code=404, detail="Verification report not found.")
     return report
+

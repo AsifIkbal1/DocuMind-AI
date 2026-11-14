@@ -70,3 +70,4 @@ backend/tests/test_verification_engine.py::test_pdf_to_excel_verification PASSED
    - When external LLM API credentials (`GEMINI_API_KEY` / `OPENAI_API_KEY`) are omitted, the engine activates the local Heuristic Extraction Engine, which parses actual document text with regular expressions without hallucinatory mock data.
 3. **Sandbox Threading Constraints**:
    - On macOS sandboxed environments, multi-threading libraries (OpenMP/BLAS) are constrained to 1 thread via `OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1` to guarantee instant imports and prevent runtime deadlock.
+

@@ -74,3 +74,4 @@ class TextNormalizer:
 
 
 text_normalizer = TextNormalizer()
+

@@ -243,3 +243,4 @@ curl -X POST "http://localhost:8000/api/documents/e285ebc6-993c-4e4b-91bb-fb02fb
   "message": "Processing queued for retry on 'invoice_valid_001.pdf'."
 }
 ```
+
